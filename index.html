@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="동원중학교 과학 수업 자료실">
+  <title>과학 자료실</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">동원중학교 과학</p>
+      <h1>동원중학교 과학 수업</h1>
+      <p>학년을 선택해 수업 자료를 확인하세요.</p>
+    </section>
+    <section aria-labelledby="grades-title">
+      <div class="section-heading"><h2 id="grades-title">학년별 자료</h2></div>
+      <div class="grade-grid">
+        <a class="grade-card" href="grade.html?g=2"><span class="grade-number">02</span><span><strong>2학년</strong><small>단원 자료 모아보기</small></span><span class="arrow" aria-hidden="true">→</span></a>
+        <a class="grade-card" href="grade.html?g=3"><span class="grade-number">03</span><span><strong>3학년</strong><small>단원 자료 모아보기</small></span><span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+    <section class="content-section" aria-labelledby="recent-title">
+      <div class="section-heading"><h2 id="recent-title">최근 수정된 자료</h2><span class="muted">수정일이 최신인 순</span></div>
+      <div id="recent-units" class="unit-grid" aria-live="polite"></div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+</body>
+</html>
