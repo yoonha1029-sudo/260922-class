@@ -1,5 +1,11 @@
 (() => {
   'use strict';
+
+  const SITE_CONFIG = {
+    schoolName: '동원중',
+    teacherName: '장윤하'
+  };
+
   const DATA_URL = 'data/units.json';
   const $ = (selector, root = document) => root.querySelector(selector);
   const escapeHTML = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -12,18 +18,32 @@
   const gradeName = (grade) => `${grade}학년`;
   const dateLabel = (value) => value ? escapeHTML(value) : '날짜 미정';
 
+  function siteTitle(pageTitle = '') {
+    const base = `윤하T 수업 자료실`;
+    return pageTitle ? `${pageTitle} | ${base} | ${SITE_CONFIG.schoolName}` : `${base} | ${SITE_CONFIG.schoolName}`;
+  }
+
   function mountChrome(units = []) {
+    document.title = siteTitle();
+    const main = $('main');
+    if (main && !main.id) main.id = 'main';
+    if (main && !$('.skip-link')) {
+      const skipLink = document.createElement('a');
+      skipLink.className = 'skip-link';
+      skipLink.href = `#${main.id}`;
+      skipLink.textContent = '본문 바로가기';
+      document.body.prepend(skipLink);
+    }
+
     const header = $('#site-header');
-    if (header) header.innerHTML = `<header class="site-header"><a class="skip-link" href="#main">본문 바로가기</a><div class="header-inner"><a class="brand" href="index.html">과학 자료실</a><nav class="nav-links" aria-label="주 메뉴"><a href="index.html">홈</a><a href="grade.html?g=2">2학년</a><a href="grade.html?g=3">3학년</a></nav></div></header>`;
+    if (header) header.innerHTML = `<header class="site-header"><div class="header-inner"><a class="brand" href="index.html">윤하T 과학 수업 자료실</a><nav class="nav-links" aria-label="주 메뉴"><a href="index.html">홈</a><a href="grade.html?g=2">2학년</a><a href="grade.html?g=3">3학년</a></nav></div></header>`;
     const footer = $('#site-footer');
     if (footer) {
       const dates = units.map((unit) => unit.updated).filter(Boolean).sort();
       const latest = dates[dates.length - 1] || '';
       const formatted = latest ? latest.replaceAll('-', '.') : '날짜 미정';
-      footer.innerHTML = `<footer class="site-footer"><div class="footer-inner"><p>과학 자료실 · 수업 자료 안내</p><p>자료 마지막 수정일: <time${latest ? ` datetime="${escapeHTML(latest)}"` : ''}>${escapeHTML(formatted)}</time></p></div></footer>`;
+      footer.innerHTML = `<footer class="site-footer"><div class="footer-inner"><p>© 2026 ${escapeHTML(SITE_CONFIG.teacherName)} · 수업 외 배포 금지</p><p>자료 마지막 수정일: <time${latest ? ` datetime="${escapeHTML(latest)}"` : ''}>${escapeHTML(formatted)}</time></p></div></footer>`;
     }
-    const main = $('main');
-    if (main) main.id = 'main';
   }
 
   async function loadUnits() {
@@ -46,6 +66,7 @@
     if (!target) return;
     const sorted = [...units].sort((a, b) => String(b.updated || '').localeCompare(String(a.updated || ''))).slice(0, 4);
     target.innerHTML = sorted.length ? sorted.map(unitCard).join('') : '<p class="status">등록된 단원이 없습니다.</p>';
+    document.title = siteTitle();
   }
   function renderGrade(units) {
     const params = new URLSearchParams(location.search);
@@ -53,7 +74,7 @@
     const valid = [2, 3].includes(grade);
     const title = valid ? gradeName(grade) : '학년을 선택해 주세요';
     $('#grade-title').textContent = title;
-    document.title = `${title} | 과학 자료실`;
+    document.title = siteTitle(title);
     const target = $('#grade-units');
     if (!target) return;
     if (!valid) { showError(target, '학년 주소가 올바르지 않습니다.'); return; }
@@ -82,7 +103,7 @@
     const id = new URLSearchParams(location.search).get('id');
     const unit = units.find((item) => item.id === id);
     if (!unit) { target.innerHTML = '<p class="status" role="status">요청한 단원을 찾을 수 없습니다. 주소의 단원 ID를 확인해 주세요.</p>'; return; }
-    document.title = `${unit.title} | 과학 자료실`;
+    document.title = siteTitle(unit.title);
     let sections = '';
     if (hasItems(unit.worksheets)) {
       const cards = await Promise.all(unit.worksheets.map(async (item) => {

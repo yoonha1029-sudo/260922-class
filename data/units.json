@@ -5,26 +5,22 @@
       "grade": 2,
       "order": 6,
       "title": "동물과 에너지",
-      "updated": "2026-10-02",
+      "updated": "2026-10-15",
       "worksheets": [
         {
-          "title": "(샘플) 학습지",
-          "file": "grade2/unit6/worksheet.pdf",
-          "description": "(샘플) 학습지 설명"
+          "title": "6-1. 소화와 순환",
+          "file": "grade2/unit6/6-1.pdf"
+        },
+        {
+          "title": "6-2. 호흡과 배설",
+          "file": "grade2/unit6/6-2.pdf"
         }
       ],
       "virtualLabs": [
         {
-          "title": "(샘플) 가상실험",
-          "url": "https://example.com/",
-          "description": "(샘플) 가상실험 설명"
-        }
-      ],
-      "resources": [
-        {
-          "title": "(샘플) 수업 자료",
-          "url": "https://example.com/",
-          "description": "(샘플) 영상 또는 복습 자료 설명"
+          "title": "호흡운동의 원리",
+          "url": "https://cdata2.tsherpa.co.kr/tsherpa/Tsherpa2021/mh/vibe/science/bio/m2_respiration/index.html",
+          "description": "호흡운동의 원리(천재교과서 가상실험)"
         }
       ]
     },
@@ -33,7 +29,7 @@
       "grade": 3,
       "order": 2,
       "title": "기권과 날씨",
-      "updated": "2026-10-02",
+      "updated": "2026-10-15",
       "worksheets": [
         {
           "title": "1. 기권의 구조",
@@ -42,6 +38,10 @@
         {
           "title": "2. 구름과 강수",
           "file": "grade3/unit2/2-2.pdf"
+        },
+        {
+          "title": "3. 기압과 바람",
+          "file": "grade3/unit2/2-3.pdf"
         }
       ],
       "virtualLabs": [],
