@@ -29,7 +29,7 @@
       "grade": 3,
       "order": 2,
       "title": "기권과 날씨",
-      "updated": "2026-10-15",
+      "updated": "2026-10-18",
       "worksheets": [
         {
           "title": "1. 기권의 구조",
@@ -45,7 +45,28 @@
         }
       ],
       "virtualLabs": [],
-      "resources": []
+      "resources": [
+        {
+          "title": "[퀴즈앤] 2-1-1. 기권의 구조",
+          "url": "https://quizn.show/quz/play/tryPinForm.do?showSeq=853568",
+          "description": "2-1-1. 기권의 구조"
+        },
+        {
+          "title": "[퀴즈앤] 2-1-2. 지구를 출입하는 에너지",
+          "url": "https://quizn.show/quz/play/tryPinForm.do?showSeq=858040",
+          "description": "2-1-2. 지구를 출입하는 에너지"
+        },
+        {
+          "title": "[퀴즈앤] 2-2-1. 포화수증기량, 이슬점",
+          "url": "https://quizn.show/quz/play/tryPinForm.do?showSeq=867639",
+          "description": "2-2-1. 포화수증기량, 이슬점"
+        },
+        {
+          "title": "[퀴즈앤] 2-3. 기압과 바람",
+          "url": "https://quizn.show/quz/play/tryPinForm.do?showSeq=885964",
+          "description": "2-3. 기압과 바람"
+        }
+      ]
     }
   ]
 }
